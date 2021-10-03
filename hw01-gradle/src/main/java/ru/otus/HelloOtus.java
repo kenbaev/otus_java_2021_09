@@ -6,13 +6,13 @@ import java.util.Random;
 import java.util.TreeSet;
 
 public class HelloOtus {
-    private static final int SET_SIZE = 100;
+    private static final int RANDOM_COUNT = 100;
     private static final int UPPER_INT = 1000;
     private static TreeSet<Integer> exampleSet = Sets.newTreeSet();
 
     private static void fillSetWithRandom() {
         Random randomGenerator = new Random();
-        for (int i = 0; i < SET_SIZE; i++) {
+        for (int i = 0; i < RANDOM_COUNT; i++) {
             exampleSet.add(randomGenerator.nextInt(UPPER_INT));
         }
     }
