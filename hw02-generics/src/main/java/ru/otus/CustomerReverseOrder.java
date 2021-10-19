@@ -1,16 +1,16 @@
 package ru.otus;
 
 
-public class CustomerReverseOrder {
+import java.util.Stack;
 
-    //todo: 2. надо реализовать методы этого класса
-    //надо подобрать подходящую структуру данных, тогда решение будет в "две строчки"
+public class CustomerReverseOrder {
+    private Stack<Customer> stack = new Stack<>();
 
     public void add(Customer customer) {
-
+        stack.push(customer);
     }
 
     public Customer take() {
-        return null; // это "заглушка, чтобы скомилировать"
+        return stack.pop();
     }
 }

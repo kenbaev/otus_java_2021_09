@@ -1,6 +1,5 @@
 package ru.otus;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -12,6 +11,21 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 class CustomerTest {
 
     // Все тесты должны проходить, менять тесты не надо.
+
+    @Test
+    @DisplayName("Проверяем, что класс Customer не сломан")
+    void setterCustomerTest() {
+        //given
+        String expectedName = "updatedName";
+        String name = "nameVas";
+        Customer customer = new Customer(1, name, 2);
+
+        //when
+        customer.setName(expectedName);
+
+        //then
+        assertThat(customer.getName()).isEqualTo(expectedName);
+    }
 
     @Test
     @DisplayName("Объект Customer как ключ в карте")
