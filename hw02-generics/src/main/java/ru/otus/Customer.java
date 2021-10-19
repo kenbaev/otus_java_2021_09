@@ -1,6 +1,6 @@
 package ru.otus;
 
-public class Customer implements Comparable<Customer>{
+public class Customer implements Comparable<Customer> {
     private final long id;
     private String name;
     private long scores;
