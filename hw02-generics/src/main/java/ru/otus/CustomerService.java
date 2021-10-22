@@ -1,23 +1,40 @@
 package ru.otus;
 
-
+import java.util.Comparator;
 import java.util.Map;
+import java.util.TreeMap;
+import java.util.AbstractMap;
 
 public class CustomerService {
+    private TreeMap<Customer, String> customerMap;
 
-    //todo: 3. надо реализовать методы этого класса
-    //важно подобрать подходящую Map-у, посмотрите на редко используемые методы, они тут полезны
+    public CustomerService() {
+        this.customerMap = new TreeMap<>(Comparator.comparingLong(Customer::getScores));
+    }
 
     public Map.Entry<Customer, String> getSmallest() {
-        //Возможно, чтобы реализовать этот метод, потребуется посмотреть как Map.Entry сделан в jdk
-        return null; // это "заглушка, чтобы скомилировать"
+        var smallestCustomerEntry = customerMap.firstEntry();
+
+        return getEntryWithCopyOfCustomer(smallestCustomerEntry);
     }
 
     public Map.Entry<Customer, String> getNext(Customer customer) {
-        return null; // это "заглушка, чтобы скомилировать"
+        var nextCustomerEntry = customerMap.higherEntry(customer);
+
+        return getEntryWithCopyOfCustomer(nextCustomerEntry);
+    }
+
+    private Map.Entry<Customer, String> getEntryWithCopyOfCustomer(Map.Entry<Customer, String> mapEntry) {
+        if (null != mapEntry) {
+            Customer customer = new Customer(mapEntry.getKey());
+
+            return new AbstractMap.SimpleEntry<>(customer, mapEntry.getValue());
+        } else {
+            return null;
+        }
     }
 
     public void add(Customer customer, String data) {
-
+        customerMap.put(customer, data);
     }
 }
