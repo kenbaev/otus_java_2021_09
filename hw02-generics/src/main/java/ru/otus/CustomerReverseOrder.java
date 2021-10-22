@@ -1,16 +1,17 @@
 package ru.otus;
 
 
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 public class CustomerReverseOrder {
-    private Stack<Customer> stack = new Stack<>();
+    private final Deque<Customer> stackCustomer = new ArrayDeque<>();
 
     public void add(Customer customer) {
-        stack.push(customer);
+        stackCustomer.push(customer);
     }
 
     public Customer take() {
-        return stack.pop();
+        return stackCustomer.pop();
     }
 }
